@@ -117,5 +117,16 @@ namespace VendingMachine
                 Console.WriteLine($"{itemNumber} {productName} Costs: {price}kr each");
             }
         }
+        public void Examine(string ID)
+        {
+            if (Products.ContainsKey(ID))
+            {
+                Console.WriteLine("Price:{0}kr Name:{1}", Convert.ToString(Products[ID].ProductPrice), Products[ID].ProductName);
+            }
+            else
+            {
+                Console.WriteLine("InValid ID.");
+            }
+        }
     }
 }
