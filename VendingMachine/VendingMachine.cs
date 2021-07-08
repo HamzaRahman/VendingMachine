@@ -19,6 +19,9 @@ namespace VendingMachine
          {"P8",new Toy("Doll",5.4M)},
         };
 
+        public static decimal moneypool = 0;
+        readonly int[] MoneyDenominations = new int[] { 1, 5, 10, 20, 50, 100, 500, 1000 };
+
         public Dictionary<string, decimal> EndTransaction()
         {
             throw new NotImplementedException();
@@ -26,7 +29,29 @@ namespace VendingMachine
 
         public decimal InsertMoney(int coin)
         {
-            throw new NotImplementedException();
+            bool valid = true;
+
+            foreach (var c in MoneyDenominations)
+            {
+                if (c == coin)
+                {
+                    valid = true;
+                    break;
+                }
+                else
+                {
+                    valid = false;
+                }
+            }
+            if (!valid)
+            {
+                Console.WriteLine("Invalid Ammount/Coin, Enter a valid Money Denomination");
+            }
+            else
+            {
+                moneypool = moneypool + coin;
+            }
+            return moneypool;
         }
 
         public decimal Purchase(string ID)
