@@ -36,7 +36,14 @@ namespace VendingMachine
 
         public void ShowAll()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{"#".PadRight(6)}{ "Product".PadRight(8) } { "Price".PadLeft(7)}");
+            foreach (KeyValuePair<string, Product> kvp in this.Products)
+            {
+                string itemNumber = kvp.Key.PadRight(5);
+                string productName = kvp.Value.ProductName.ToString().PadRight(10);
+                string price = kvp.Value.ProductPrice.ToString().PadLeft(7);
+                Console.WriteLine($"{itemNumber} {productName} Costs: {price}kr each");
+            }
         }
     }
 }
