@@ -56,7 +56,23 @@ namespace VendingMachine
 
         public decimal Purchase(string ID)
         {
-            throw new NotImplementedException();
+            if (Products.ContainsKey(ID))
+            {
+                if (moneypool >= Products[ID].ProductPrice)
+                {
+                    Products[ID].Use();
+                    moneypool = moneypool - Products[ID].ProductPrice;
+                }
+                else
+                {
+                    Console.WriteLine("Not Enough Money, Please Add More Money");
+                }
+            }
+            else
+            {
+                Console.WriteLine("InValid Choice, Try Again");
+            }
+            return moneypool;
         }
 
         public void ShowAll()
